@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import {useRouter} from "vue-router";
+import { useRouter } from "vue-router";
 
 let router = useRouter()
 
 const toRouter = (pathStr: any, param: any) => {
-  router.push({path: pathStr, query: param})
+  router.push({ path: pathStr, query: param })
 }
 
 const init = () => {
@@ -16,7 +16,7 @@ init()
   <div class="container">
     <div style="height: 50px"></div>
     <div class="body">
-
+      <h1>测试</h1>
     </div>
   </div>
 </template>
@@ -36,5 +36,4 @@ init()
   font-family: sjxk;
   src: url('../assets/font/SanJiXingKaiJianTi-Cu-2.ttf');
 }
-
 </style>
