@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import {fGetImageByType} from "@/api";
 import {reactive} from "vue";
+import {webUrl} from "@/env-config";
 
 const data = reactive<any>({
   bgImage: []
@@ -8,7 +9,7 @@ const data = reactive<any>({
 
 const getBgStyle = (obj: any, index: number) => {
   return {
-    backgroundImage: "url(http://wzqyszl.com:8080" + obj + ")",
+    backgroundImage: "url("+webUrl + obj + ")",
     animationDelay: index * 6 + "s",
     animationDuration: data.bgImage.length * 6 + "s"
   }

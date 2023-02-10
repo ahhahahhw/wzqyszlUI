@@ -3,6 +3,7 @@ import {reactive} from "vue";
 import {fGetRandomImage} from "@/api";
 import {useRouter} from "vue-router";
 import {useStore} from "@/store";
+import {webUrl} from "@/env-config";
 
 let router = useRouter()
 let store = useStore()
@@ -13,7 +14,7 @@ const data = reactive<any>({
 
 const init = () => {
   fGetRandomImage('背景图片').then(res => {
-    store.containerStyle.backgroundImage = "url(http://wzqyszl.com:8080" + res.data.data + ")"
+    store.containerStyle.backgroundImage = "url("+webUrl + res.data.data + ")"
     data.containerStyle = store.containerStyle
   })
 

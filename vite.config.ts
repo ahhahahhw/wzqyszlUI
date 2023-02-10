@@ -14,14 +14,6 @@ export default defineConfig(({command, mode}) => {
         },
         server: {
             port: 80,
-            proxy: {
-                '/api:': {
-                    // target: 'http://124.222.231.228:8080/',
-                    target: 'http://localhost:8088/',
-                    changeOrigin: true,
-                    rewrite: (path) => path.replace(/^\/api/, "") // 不可以省略rewrite
-                },
-            }
         },
         terserOptions: {
             compress: {
