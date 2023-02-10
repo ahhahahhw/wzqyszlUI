@@ -8,7 +8,7 @@ const data = reactive<any>({
 
 const getBgStyle = (obj: any, index: number) => {
   return {
-    backgroundImage: "url(http://localhost:8088" + obj + ")",
+    backgroundImage: "url(http://wzqyszl.com:8080" + obj + ")",
     animationDelay: index * 6 + "s",
     animationDuration: data.bgImage.length * 6 + "s"
   }

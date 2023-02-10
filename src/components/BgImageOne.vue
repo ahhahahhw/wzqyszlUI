@@ -13,7 +13,7 @@ const data = reactive<any>({
 
 const init = () => {
   fGetRandomImage('背景图片').then(res => {
-    store.containerStyle.backgroundImage = "url(http://localhost:8088" + res.data.data + ")"
+    store.containerStyle.backgroundImage = "url(http://wzqyszl.com:8080" + res.data.data + ")"
     data.containerStyle = store.containerStyle
   })
 
