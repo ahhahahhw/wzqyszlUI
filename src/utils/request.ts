@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const service = axios.create({
-    baseURL: 'http://localhost:8088',
+    baseURL: 'http://wzqyszl.com:8080',
     timeout: 30 * 1000,
     headers: {
         // 'Content-Type': 'application/json;charset=UTF-8',
