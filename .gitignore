@@ -25,3 +25,4 @@ dist-ssr
 
 #me
 /.vscode/extensions.json
+vite.config.ts
