@@ -14,7 +14,7 @@ export const useStore = defineStore('main', {
         enabled: true,
         strategies: [
             {
-                storage: sessionStorage,//localStorage存储多个key
+                storage: sessionStorage,
                 key: "wzqyszl"
             },
         ]
