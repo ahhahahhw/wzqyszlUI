@@ -1,8 +1,9 @@
 import axios from "axios";
+import {webUrl} from "@/env-config";
 
 
 const service = axios.create({
-    baseURL: 'http://wzqyszl.com:8080',
+    baseURL: webUrl,
     timeout: 30 * 1000,
     headers: {
         // 'Content-Type': 'application/json;charset=UTF-8',
