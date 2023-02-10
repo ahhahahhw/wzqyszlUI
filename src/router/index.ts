@@ -13,11 +13,7 @@ const redList = ['/Manage', "/Manage/ImageManage", "/Manage/UserManage", "/Manag
 router.beforeEach((to, from, next) => {
     let store: any = useStore()
     // 没有用户信息的情况下，不可以进入红名单
-    console.log("即将前往:" + to.path)
-    console.log("是否红名单", redList.indexOf(to.path) > -1)
-
     if (redList.indexOf(to.path) > -1) {
-        console.log("是否有用户信息", store.userInfo && store.userInfo.token)
         if (store.userInfo && store.userInfo.token) {
             next()
         } else {
