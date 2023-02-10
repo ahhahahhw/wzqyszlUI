@@ -22,3 +22,63 @@ export const fGetImageByType = (data: any) => {
 export const fGetRandomImage = (data: any) => {
     return service.post('/visitor/getRandomImage', data)
 }
+
+/**
+ * 获取所有blog
+ */
+export const fGetBlogAll = () => {
+    return service.post('/user/getBlogAll')
+}
+
+
+//文件上传
+export const fUploadImage = (file: any) => {
+    return service.post('/user/uploadImage', file,
+        {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+    )
+}
+
+/**
+ * 获取所有图片信息
+ */
+export const fGetImageInfoAll = () => {
+    return service.post('/manager/getImageInfoAll')
+}
+
+/**
+ * 删除图片
+ * @param id 图片的id
+ */
+export const fDeleteImage = (id: any) => {
+    return service.post('/manager/deleteImage', id)
+}
+
+/**
+ * 获取一篇blog
+ * @param id blog的id
+ */
+export const fGetBlog = (id: any) => {
+    return service.post('/visitor/getBlog', id)
+}
+
+/**
+ * 获取指定类型所有blog
+ * @param type
+ */
+export const fGetBlogsByType = (type: any) => {
+    return service.post('/visitor/getBlogsByType', type)
+}
+
+/**
+ * 保存blog
+ * @param param json
+ */
+export const fSaveBlog = (param: any) => {
+    return service.post('/user/saveBlog', param)
+}
+
+
