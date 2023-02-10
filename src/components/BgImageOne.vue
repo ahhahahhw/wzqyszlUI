@@ -6,7 +6,7 @@ import {useStore} from "@/store";
 import {webUrl} from "@/env-config";
 
 let router = useRouter()
-let store = useStore()
+let store:any = useStore()
 const data = reactive<any>({
   containerStyle: {},
 })

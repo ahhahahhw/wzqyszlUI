@@ -2,10 +2,11 @@ import {defineStore} from "pinia";
 
 export const useStore = defineStore('main', {
     state: () => ({
+        userInfo: null,
         socket: null,
         blog: {},
         containerStyle: {
-            backgroundImage:''
+            backgroundImage: ''
         }
     }),
     getters: {},
@@ -20,5 +21,3 @@ export const useStore = defineStore('main', {
         ]
     },
 })
-
-

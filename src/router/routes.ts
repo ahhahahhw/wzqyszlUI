@@ -16,9 +16,13 @@ export default [
         component: () => import('@/views/Test.vue'),
     },
     {
+        path: '/Login',
+        component: () => import('@/views/login/Login.vue'),
+    },
+    {
         path: '/Manage',
         component: () => import('@/views/manage/Manage.vue'),
-        redirect: '/manage/ImageManage',
+        redirect: '/Manage/ImageManage',
         children: [
             {
                 path: 'ImageManage'

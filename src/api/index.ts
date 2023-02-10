@@ -27,13 +27,13 @@ export const fGetRandomImage = (data: any) => {
  * 获取所有blog
  */
 export const fGetBlogAll = () => {
-    return service.post('/user/getBlogAll')
+    return service.post('/manager/getBlogAll')
 }
 
 
 //文件上传
 export const fUploadImage = (file: any) => {
-    return service.post('/user/uploadImage', file,
+    return service.post('/manager/uploadImage', file,
         {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -66,6 +66,25 @@ export const fGetBlog = (id: any) => {
 }
 
 /**
+ * 登录接口
+ * @param data
+ */
+export const fLogin = (data: any) => {
+    return service.post('/visitor/login', data, {
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+        }
+    })
+}
+
+/**
+ * 获取所有用户
+ */
+export const fGetUserAll = () => {
+    return service.post('/manager/getUserAll')
+}
+
+/**
  * 获取指定类型所有blog
  * @param type
  */
@@ -78,7 +97,7 @@ export const fGetBlogsByType = (type: any) => {
  * @param param json
  */
 export const fSaveBlog = (param: any) => {
-    return service.post('/user/saveBlog', param)
+    return service.post('/manager/saveBlog', param)
 }
 
 

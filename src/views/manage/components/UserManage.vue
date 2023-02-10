@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {fGetUserAll} from "@/api/api";
+import {fGetUserAll} from "@/api";
 import {reactive} from "vue";
 
 const init = () => {

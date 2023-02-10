@@ -11,7 +11,7 @@ const toRouter = (pathStr: any) => {
 <template>
   <div class="container">
     <div class="header">
-      <div class="menu-li pointer" @click="toRouter('/home')">博客首页</div>
+      <div class="menu-li pointer" @click="toRouter('/Home')">博客首页</div>
       <div class="menu-li pointer" @click="toRouter('/manage/ImageManage')">图片管理</div>
       <div class="menu-li pointer" @click="toRouter('/manage/BlogManage')">文章管理</div>
       <div class="menu-li pointer" @click="toRouter('/manage/UserManage')">用户管理</div>

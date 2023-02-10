@@ -1,12 +1,12 @@
 import axios from "axios";
 import {webUrl} from "@/env-config";
+import {useStore} from "@/store";
 
 
 const service = axios.create({
     baseURL: webUrl,
     timeout: 30 * 1000,
     headers: {
-        // 'Content-Type': 'application/json;charset=UTF-8',
         'Content-Type': 'text/plain',
     }
 });
@@ -14,7 +14,11 @@ const service = axios.create({
 
 // 添加请求拦截器
 service.interceptors.request.use(function (config: any) {
+    let store: any = useStore()
     // 在发送请求之前做些什么
+    if (store.userInfo && store.userInfo.token) {
+        config.headers.Authorization = store.userInfo.token
+    }
     return config;
 }, function (error) {
     // 对请求错误做些什么

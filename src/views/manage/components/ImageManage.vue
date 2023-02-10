@@ -3,6 +3,7 @@ import {reactive, ref} from "vue";
 import 'element-plus'
 import {ElMessage} from "element-plus/es";
 import {fDeleteImage, fGetImageInfoAll, fUploadImage} from "@/api";
+import {webUrl} from "@/env-config";
 
 
 const init = () => {
@@ -10,7 +11,7 @@ const init = () => {
     data.bgImage = res.data.data
     data.bgImageSrc = []
     res.data.data.forEach((item: any, index: number) => {
-      data.bgImageSrc.push("/api"+item.fileUrl)
+      data.bgImageSrc.push(webUrl + item.fileUrl)
     })
   })
 }
@@ -121,7 +122,7 @@ const uploadBtn = () => {
     <div class="body">
       <div class="image-list">
         <div v-for="(img,index) in data.bgImage" :key="index" class="block">
-          <el-image style="width: 100px; height: 100px" :src="img.fileUrl"
+          <el-image style="width: 100px; height: 100px" :src="webUrl+img.fileUrl"
                     :preview-src-list="data.bgImageSrc"
                     :initial-index="index" fit="cover"/>
           <span class="delImage">{{ img.fileName }}</span>
