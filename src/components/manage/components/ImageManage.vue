@@ -162,8 +162,6 @@ const uploadBtn = () => {
 
 </template>
 <style scoped lang="less">
-
-
 .upload {
   display: flex;
   flex-direction: column;

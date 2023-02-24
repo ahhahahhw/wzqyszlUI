@@ -5,36 +5,32 @@ export default [
     },
     {
         path: '/Welcome',
-        component: () => import('@/views/Welcome.vue'),
+        component: () => import('@/components/welcome/Welcome.vue'),
     },
     {
         path: '/Home',
-        component: () => import('@/views/Home.vue'),
+        component: () => import('@/components/home/Home.vue'),
     },
     {
         path: '/Test',
-        component: () => import('@/views/Test.vue'),
-    },
-    {
-        path: '/Login',
-        component: () => import('@/views/login/Login.vue'),
+        component: () => import('@/components/test/Test.vue'),
     },
     {
         path: '/Manage',
-        component: () => import('@/views/manage/Manage.vue'),
+        component: () => import('@/components/manage/Manage.vue'),
         redirect: '/Manage/ImageManage',
         children: [
             {
                 path: 'ImageManage'
-                , component: () => import('@/views/manage/components/ImageManage.vue')
+                , component: () => import('@/components/manage/components/ImageManage.vue')
             },
             {
                 path: 'UserManage'
-                , component: () => import('@/views/manage/components/UserManage.vue')
+                , component: () => import('@/components/manage/components/UserManage.vue')
             },
             {
                 path: 'BlogManage'
-                , component: () => import('@/views/manage/components/BlogManage.vue')
+                , component: () => import('@/components/manage/components/BlogManage.vue')
             },
         ]
     },

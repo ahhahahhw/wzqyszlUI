@@ -16,7 +16,6 @@ init()
   <div class="container">
     <div style="height: 50px"></div>
     <div class="body">
-      <h1>测试</h1>
     </div>
   </div>
 </template>
@@ -34,6 +33,6 @@ init()
 
 @font-face {
   font-family: sjxk;
-  src: url('../assets/font/SanJiXingKaiJianTi-Cu-2.ttf');
+  src: url('../../assets/font/SanJiXingKaiJianTi-Cu-2.ttf');
 }
 </style>

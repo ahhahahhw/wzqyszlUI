@@ -96,8 +96,30 @@ export const fGetBlogsByType = (type: any) => {
  * 保存blog
  * @param param json
  */
-export const fSaveBlog = (param: any) => {
-    return service.post('/manager/saveBlog', param)
+export const fSaveBlog = (data: any) => {
+    return service.post('/manager/saveBlog', data)
 }
+
+/**
+ * 分页获取消息
+ * @param param json
+ */
+export const fGetMessagesByPage = (data: any) => {
+    return service.post('/visitor/getMessagesByPage', data, {
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+        }
+    })
+}
+
+/**
+ * 分页获取消息
+ * @param param json
+ */
+export const fSaveMessage = (data: any) => {
+    return service.post('/visitor/saveMessage', data)
+}
+
+
 
 

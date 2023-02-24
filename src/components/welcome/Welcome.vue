@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {useRouter} from "vue-router";
-import BgImage from "@/components/BgImage.vue";
+import BgImage from "@/components/common/BgImage.vue";
 
 let router = useRouter()
 
@@ -11,7 +11,7 @@ const toRouter = (pathStr: any, param: any) => {
 
 </script>
 <template>
-  <bg-image></bg-image>
+  <BgImage :is-multiple="false"></BgImage>
   <div class="container">
     <div class="left"></div>
     <div class="main">
@@ -173,7 +173,7 @@ const toRouter = (pathStr: any, param: any) => {
 
 @font-face {
   font-family: sjxk;
-  src: url('../assets/font/SanJiXingKaiJianTi-Cu-2.ttf');
+  src: url('../../assets/font/SanJiXingKaiJianTi-Cu-2.ttf');
 }
 
 
