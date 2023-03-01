@@ -2,6 +2,8 @@ import {createApp} from 'vue'
 import App from './App.vue'
 //全局样式
 import './style.css'
+import './assets/css/color.css'
+import './assets/css/animation.css'
 
 //router4
 import {router} from './router'

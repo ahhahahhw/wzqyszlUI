@@ -1,19 +1,22 @@
 export default [
     {
         path: '/',
-        redirect: '/Welcome',
-    },
-    {
-        path: '/Welcome',
-        component: () => import('@/components/welcome/Welcome.vue'),
-    },
-    {
-        path: '/Home',
-        component: () => import('@/components/home/Home.vue'),
+        redirect: '/Home',
     },
     {
         path: '/Test',
         component: () => import('@/components/test/Test.vue'),
+    },
+    {
+        path: '/Home',
+        component: () => import('@/components/home/Home.vue'),
+        redirect: '/Home/BlogList',
+        children: [
+            {
+                path: 'BlogList'
+                , component: () => import('@/components/home/component/BlogList.vue')
+            },
+        ]
     },
     {
         path: '/Manage',

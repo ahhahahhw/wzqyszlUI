@@ -102,7 +102,7 @@ export const fSaveBlog = (data: any) => {
 
 /**
  * 分页获取消息
- * @param param json
+ * @param data
  */
 export const fGetMessagesByPage = (data: any) => {
     return service.post('/visitor/getMessagesByPage', data, {
@@ -113,13 +113,28 @@ export const fGetMessagesByPage = (data: any) => {
 }
 
 /**
- * 分页获取消息
+ * 分页获取评论
  * @param param json
  */
-export const fSaveMessage = (data: any) => {
-    return service.post('/visitor/saveMessage', data)
+export const fGetCommentsByPage = (data: any) => {
+    return service.post('/visitor/getCommentsByPage', data, {
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+        }
+    })
 }
 
+/**
+ * 保存评论
+ * @param data
+ */
+export const fSaveComment = (data: any) => {
+    return service.post('/visitor/saveComment', data, {
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+        }
+    })
+}
 
 
 

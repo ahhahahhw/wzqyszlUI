@@ -1,101 +1,108 @@
 <script lang="ts" setup>
-import {fGetMessagesByPage} from "@/api";
+import {fGetCommentsByPage} from "@/api";
 import {reactive} from "vue";
 import {getDateDiff} from "@/utils/totalUtil";
 import {webUrl} from "@/env-config";
 import ProPage from "@/components/common/proPage.vue";
 
-const emit = defineEmits([''])
+// const emit = defineEmits([''])
 const props = defineProps({
-  messageIdz: {
-    type: Boolean,
+  toBlogId: {
+    type: Number,
     default: false,
-    required: false,
-  },
+    required: true,
+  }
+})
+
+defineExpose({
+  init,
 })
 
 const data = reactive<any>({
-  user: {
-    id: 10000
-  },
+  user: {},
   page: {
     current: 1,
     size: 10,
     total: 0,
   },
-  messages: [],
-  mesaage: {},
+  comments: [],
+  comment: {},
 })
 
 const toPage = (page: any) => {
   data.page.current = page;
   window.scrollTo({
-    top: document.getElementById('comment-content')!.offsetTop
+    top: document.getElementById('commentInfo-title')!.offsetTop
   });
 
   console.log(data.page.total)
-  getMessagesByPage(data.message, data.page);
+  getCommentsByPage(data.comment, data.page);
 }
-const getMessagesByPage = (message: any, page: any) => {
-  fGetMessagesByPage({
-    message: message,
+
+const getCommentsByPage = (comment: any, page: any) => {
+  fGetCommentsByPage({
+    comment: comment,
     page: page
   }).then(res => {
-    console.log('fGetMessagesByPage', res)
-    data.messages = res.data.data.records
-    data.messages.forEach((item: any) => {
-      item.createUserHeadImg = webUrl + item.createUserHeadImg
+    console.log('fGetCommentsByPage', res)
+    data.comments = res.data.data.records
+    data.comments.forEach((item: any) => {
+      if (item.createUserHeadImg) {
+        item.createUserHeadImg = webUrl + item.createUserHeadImg
+      }
+      if (item.toUserHeadImg) {
+        item.toUserHeadImg = webUrl + item.toUserHeadImg
+      }
     })
     data.page.total = res.data.data.total
   })
 }
 
 
-const init = () => {
-  getMessagesByPage({}, data.page)
+function init() {
+  data.comment = {}
+  data.comment.toBlogId = props.toBlogId
 
+  getCommentsByPage(data.comment, data.page)
 }
 init()
 </script>
 
 <template>
-  <div class="container">
-    <!-- 评论数量 -->
-    <div class="commentInfo-title">
-      <span style="font-size: 1.15rem">评论列表 | </span>
-      <span>{{ data.page.total }} 条留言</span>
-    </div>
-    <!-- 评论详情 -->
-    <div v-if="data.messages.length > 0" id="comment-content" class="commentInfo-detail"
-         v-for="(item, index) in data.messages"
-         :key="index">
-      <!-- 头像 -->
-      <el-avatar shape="square" class="commentInfo-avatar" :size="35" :src="item.createUserHeadImg"></el-avatar>
+  <!-- 评论数量 -->
+  <div id="commentInfo-title" class="commentInfo-title">
+    <span style="font-size: 1.15rem">评论列表 | </span>
+    <span>{{ data.page.total }} 条留言</span>
+  </div>
+  <!-- 评论详情 -->
+  <div v-if="data.comments.length > 0" class="commentInfo-detail"
+       v-for="(item, index) in data.comments"
+       :key="index">
+    <!-- 头像 -->
+    <el-avatar shape="square" class="commentInfo-avatar" :size="35" :src="item.createUserHeadImg"></el-avatar>
 
-      <div style="flex: 1;padding-left: 12px">
-        <!-- 评论信息 -->
-        <div style="display: flex;justify-content: space-between">
-          <div>
-            <span class="commentInfo-username">{{ item.createUserName }}</span>
-            <span class="commentInfo-master" v-if="item.createUserId === data.user.id">主人翁</span>
-            <span class="commentInfo-other">{{ getDateDiff(item.createTime) }}</span>
-          </div>
-        </div>
-        <!-- 评论内容 -->
-        <div class="commentInfo-content">
-          <span v-html="item.message"></span>
+    <div style="flex: 1;padding-left: 12px">
+      <!-- 评论信息 -->
+      <div style="display: flex;justify-content: space-between">
+        <div>
+          <span class="commentInfo-username">{{ item.createUserName }}</span>
+          <span class="commentInfo-master" v-if="item.createUserId === data.user.id">主人翁</span>
+          <span class="commentInfo-other">{{ getDateDiff(item.createTime) }}</span>
         </div>
       </div>
+      <!-- 评论内容 -->
+      <div class="commentInfo-content">
+        <span v-html="item.comment"></span>
+      </div>
     </div>
-    <proPage :current="data.page.current"
-             :size="data.page.size"
-             :total="data.page.total"
-             :buttonSize="6"
-             color="#23d5ab"
-             @toPage="toPage">
-    </proPage>
   </div>
-
+  <proPage :current="data.page.current"
+           :size="data.page.size"
+           :total="data.page.total"
+           :buttonSize="6"
+           color="#23d5ab"
+           @toPage="toPage">
+  </proPage>
 </template>
 <style scoped lang="less">
 .container {
