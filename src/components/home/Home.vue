@@ -38,10 +38,6 @@ init()
 .container {
   height: 100%;
   width: 100%;
-  background-size: cover;
-  background-position: 75% 50%;
-  background-repeat: no-repeat;
-  background-image: url("http://wzqyszl.com:8080/img/93302401_p0.jpg");
 
 
 }

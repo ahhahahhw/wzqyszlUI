@@ -22,7 +22,7 @@ const props = defineProps({
     <div v-for="(article, index) in props.blogs"
          :key="index"
          :class="{'my-animation-slide-top': index % 2 !== 0,'my-animation-slide-bottom': index % 2 === 0}"
-         class="recent-post-item shadow-box background-opacity wow"
+         class="recent-post-item shadow-box wow"
          @click="">
       <!-- 封面 -->
       <div :class="{ leftImage: index % 2 !== 0, rightImage: index % 2 === 0 }" class="recent-post-item-image">
@@ -116,6 +116,12 @@ const props = defineProps({
   </div>
 </template>
 <style lang="less" scoped>
+
+.my-el-image {
+  width: 100%;
+  height: 100%;
+}
+
 .article-first {
   color: var(--greyFont);
   border-bottom: 1px dashed var(--lightGray);
