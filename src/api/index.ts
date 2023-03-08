@@ -59,10 +59,14 @@ export const fDeleteImage = (id: any) => {
 
 /**
  * 获取一篇blog
- * @param id blog的id
+ * @param data
  */
-export const fGetBlog = (id: any) => {
-    return service.post('/visitor/getBlog', id)
+export const fGetBlog = (data: any) => {
+    return service.post('/visitor/getBlog', data, {
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+        }
+    })
 }
 
 /**
@@ -94,10 +98,14 @@ export const fGetBlogsByType = (type: any) => {
 
 /**
  * 保存blog
- * @param param json
+ * @param data
  */
 export const fSaveBlog = (data: any) => {
-    return service.post('/manager/saveBlog', data)
+    return service.post('/manager/saveBlog', data, {
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+        }
+    })
 }
 
 /**
@@ -114,7 +122,7 @@ export const fGetMessagesByPage = (data: any) => {
 
 /**
  * 分页获取评论
- * @param param json
+ * @param data
  */
 export const fGetCommentsByPage = (data: any) => {
     return service.post('/visitor/getCommentsByPage', data, {

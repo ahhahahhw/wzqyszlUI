@@ -14,7 +14,6 @@ import 'element-plus/dist/index.css'
 import {createPinia} from "pinia";
 import piniaPluginPersist from "pinia-plugin-persist";
 
-
 const app = createApp(App)
 
 const paina = createPinia()

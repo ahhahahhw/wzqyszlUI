@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import {reactive} from "vue";
 import ProButton from "@/components/common/proButton.vue";
+import {ElMessage} from "element-plus";
 
 const props = defineProps({});
 
@@ -10,6 +11,18 @@ const data = reactive<any>({
   content: '',
 })
 
+const submit = () => {
+  if (data.content) {
+    emit('submit', data.content)
+    data.content=''
+  } else {
+    ElMessage({
+      message: '你还没写呢~',
+      grouping: true,
+      type: 'info',
+    })
+  }
+}
 
 
 const init = () => {
@@ -38,7 +51,7 @@ init()
 
     <div style="display: flex">
       <proButton info="提交"
-                 @click.native="emit('submit',data.content)"
+                 @click.native="submit"
                  before="rgb(131, 123, 199)"
                  after="linear-gradient(45deg, #f43f3b, #ec008c)">
       </proButton>

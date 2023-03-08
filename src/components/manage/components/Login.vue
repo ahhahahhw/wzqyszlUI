@@ -6,7 +6,6 @@ import Vcode from "vue3-puzzle-vcode";
 import {useRouter} from "vue-router";
 import {useStore} from "@/store";
 import {webUrl} from "@/env-config";
-import BgImage from "@/components/common/BgImage.vue";
 
 let router = useRouter()
 let store:any = useStore()
@@ -57,7 +56,6 @@ const init = () => {
 init()
 </script>
 <template>
-  <BgImage></BgImage>
   <div id="container">
     <div class="login-box">
       <h2>Login</h2>

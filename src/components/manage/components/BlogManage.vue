@@ -20,9 +20,9 @@ const data = reactive<any>({
 
 const handleEdit = (id: any) => {
   if (id) {
-    router.push({path: "/home/editBlog", query: {id}})
+    router.push({path: "/home/BlogEditView", query: {id}})
   } else {
-    router.push({path: "/home/editBlog"})
+    router.push({path: "/home/BlogEditView"})
   }
 
 }
@@ -38,11 +38,16 @@ const handleDelete = (id: any) => {
 </script>
 <template>
   <div class="container">
+
     <div id="body">
+      <el-row class="mb-4">
+        <el-button type="primary" round class="menu-li" @click="handleEdit()">新增Blog</el-button>
+      </el-row>
       <el-table :data="data.tableData" style="width: 100%">
         <el-table-column prop="title" label="文章标题" width="180"/>
         <el-table-column prop="createUserName" label="创建人" width="180"/>
         <el-table-column prop="type" label="文章类型" width="180"/>
+        <el-table-column prop="content" label="content" width="180"/>
         <el-table-column prop="createTime" label="创建时间" width="180"/>
         <el-table-column prop="coverSrc" label="封面链接" width="180"/>
         <el-table-column label="操作" width="180">
@@ -58,10 +63,6 @@ const handleDelete = (id: any) => {
         </el-table-column>
       </el-table>
     </div>
-    <div id="menu">
-      <div class="menu-li" @click="handleEdit()">新增Blog</div>
-    </div>
-
   </div>
 </template>
 <style scoped lang="less">
@@ -69,15 +70,11 @@ const handleDelete = (id: any) => {
   height: 100%;
   width: 100%;
   background-color: black;
-  display: flex;
-  flex-direction: row;
 
   #body {
-    flex: 22;
   }
 
   #menu {
-    flex: 2;
 
     .menu-li {
       width: 100%;

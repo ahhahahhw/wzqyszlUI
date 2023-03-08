@@ -9,9 +9,9 @@ import ProPage from "@/components/common/proPage.vue";
 const props = defineProps({
   toBlogId: {
     type: Number,
-    default: false,
+    default: null,
     required: true,
-  }
+  },
 })
 
 defineExpose({
@@ -34,12 +34,11 @@ const toPage = (page: any) => {
   window.scrollTo({
     top: document.getElementById('commentInfo-title')!.offsetTop
   });
-
-  console.log(data.page.total)
   getCommentsByPage(data.comment, data.page);
 }
 
 const getCommentsByPage = (comment: any, page: any) => {
+  comment.toBlogId = props.toBlogId
   fGetCommentsByPage({
     comment: comment,
     page: page
@@ -62,7 +61,6 @@ const getCommentsByPage = (comment: any, page: any) => {
 function init() {
   data.comment = {}
   data.comment.toBlogId = props.toBlogId
-
   getCommentsByPage(data.comment, data.page)
 }
 init()

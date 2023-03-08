@@ -2,13 +2,17 @@
     box-sizing: border-box;
 }
 
-body {
+html, body, #app {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
     color: var(--fontColor);
     font-family: var(--globalFont), serif;
     word-break: break-word;
     scroll-behavior: smooth;
-    padding: 0;
-    margin: 0;
 }
 
 body::-webkit-scrollbar {

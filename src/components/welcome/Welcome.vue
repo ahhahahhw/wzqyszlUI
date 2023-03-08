@@ -4,14 +4,9 @@ import BgImage from "@/components/common/BgImage.vue";
 
 let router = useRouter()
 
-
-const toRouter = (pathStr: any, param: any) => {
-  router.push({path: pathStr, query: param})
-}
-
 </script>
 <template>
-  <BgImage :is-multiple="false"></BgImage>
+  <BgImage  :bg-type="2" url="/img/世界的镇魂曲-雪.jpg"></BgImage>
   <div class="container">
     <div class="left"></div>
     <div class="main">
@@ -20,7 +15,7 @@ const toRouter = (pathStr: any, param: any) => {
           向着星辰与深渊
         </div>
         <div class="content">
-          <div class="enter" @click="toRouter('/Home','')">
+          <div class="enter" @click="router.push('/Home')">
             <span></span>
             <span></span>
             <span></span>

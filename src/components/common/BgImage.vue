@@ -16,11 +16,19 @@ const data = reactive<any>({
 })
 
 const props = defineProps({
-  isMultiple: {
-    type: Boolean,
-    default: false,
+  //1:渐变,2:滚动,其他:随机单张
+  bgType: {
+    type: Number,
+    default: 0,
     required: false,
-  }
+  },
+  //背景图片地址,当bgType=2时必填
+  url: {
+    type: String,
+    default: '',
+    required: false,
+  },
+
 })
 
 const getBgStyle = (obj: any, index: number) => {
@@ -32,29 +40,36 @@ const getBgStyle = (obj: any, index: number) => {
 }
 
 const init = () => {
-  data.isMultiple = props.isMultiple
-  if (data.isMultiple) {
+  //渐变
+  if (props.bgType === 1) {
     fGetImageByType("背景图片").then(res => {
       data.bgImage = res.data.data
     })
-  } else {
+  }
+  //滚动
+  else if (props.bgType === 2 && props.url) {
+    data.containerStyle.animation = "gradientBG 80s ease infinite"
+    data.containerStyle.backgroundImage = "url(" + webUrl + props.url + ")"
+  }
+  //默认随机单张
+  else {
     fGetRandomImage('背景图片').then(res => {
-      store.containerStyle.backgroundImage = "url(" + webUrl + res.data.data + ")"
-      data.containerStyle = store.containerStyle
+      data.containerStyle.backgroundImage = "url(" + webUrl + res.data.data + ")"
     })
   }
 }
 init()
 </script>
 <template>
-  <div v-if="!data.isMultiple" class="bgImg" :style="data.containerStyle"></div>
-  <div v-if="data.isMultiple" class="cb-slideshow">
+
+  <div v-if="props.bgType===1" class="cb-slideshow">
     <div v-for="(obj,index) in data.bgImage" v-if="data.bgImage.length>0">
       <span :style="getBgStyle(obj,index)"></span>
     </div>
   </div>
+  <div v-else :style="data.containerStyle" class="bgImg"></div>
 </template>
-<style scoped lang="less">
+<style lang="less" scoped>
 .bgImg {
   position: fixed;
   top: 0;
@@ -66,6 +81,9 @@ init()
   background-size: cover;
   background-position: center;
   transition: opacity, background 1s ease-in-out 0s;
+
+  //-webkit-animation: gradientBG 100s ease infinite;
+  //animation: gradientBG 100s ease infinite;
 }
 
 .cb-slideshow, .cb-slideshow:after {
@@ -99,6 +117,7 @@ init()
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+
 
 @keyframes imageAnimation {
   0% {

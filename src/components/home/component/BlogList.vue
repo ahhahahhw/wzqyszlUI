@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import {useRoute, useRouter} from "vue-router";
 import {webUrl} from "@/env-config";
+import {nextTick} from "vue";
 
 let router = useRouter()
 let route = useRoute()
@@ -14,20 +15,20 @@ const props = defineProps({
   }
 })
 
-
 </script>
 
 <template>
+
   <div v-if="props.blogs" class="recent-post-container">
     <div v-for="(article, index) in props.blogs"
          :key="index"
          :class="{'my-animation-slide-top': index % 2 !== 0,'my-animation-slide-bottom': index % 2 === 0}"
-         class="recent-post-item shadow-box wow"
-         @click="">
+         class="recent-post-item shadow-box"
+       >
       <!-- 封面 -->
+
       <div :class="{ leftImage: index % 2 !== 0, rightImage: index % 2 === 0 }" class="recent-post-item-image">
-        <el-image v-once
-                  :src="webUrl+'/img/风花节的乐章.jpg'"
+        <el-image :src="article.coverSrc"
                   class="my-el-image"
                   fit="cover"
                   lazy>
@@ -54,7 +55,7 @@ const props = defineProps({
           发布于 {{ article.createTime }}
         </div>
         <!-- 标题 -->
-        <h3>{{ article.title }}</h3>
+        <h3 class="pointer" @click="router.push({path:'/Home/BlogView',query:{id:article.id}})">{{ article.title }}</h3>
         <!-- 信息 -->
         <div class="post-meta" style="margin-bottom: 15px">
           <span>
@@ -139,12 +140,12 @@ const props = defineProps({
 }
 
 .recent-post-item {
+  background-color: rgba(255, 255, 255, 0.8);
   height: 300px;
   position: relative;
   display: flex;
   flex-direction: row;
   user-select: none;
-  cursor: pointer;
   overflow: hidden;
   border-radius: 10px;
   animation: hideToShow 1s ease-in-out;

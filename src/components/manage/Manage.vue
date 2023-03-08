@@ -10,7 +10,7 @@ const toRouter = (pathStr: any) => {
 </script>
 <template>
   <div class="container">
-    <div class="header">
+    <div class="menu">
       <div class="menu-li pointer" @click="toRouter('/Home')">博客首页</div>
       <div class="menu-li pointer" @click="toRouter('/manage/ImageManage')">图片管理</div>
       <div class="menu-li pointer" @click="toRouter('/manage/BlogManage')">文章管理</div>
@@ -27,24 +27,28 @@ const toRouter = (pathStr: any) => {
   width: 100%;
   background-color: black;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
-  .header {
-    flex: 2;
+  .menu {
+    flex: 4;
     background-color: #f7f8fa;
     display: flex;
-    justify-content: center; //水平
+    flex-direction: column;
 
     .menu-li {
+      color: black;
+      line-height: 50px;
+      margin: 10px 0px;
+    }
+
+    .menu-li:hover{
       background-color: black;
       color: white;
-      line-height: 50px;
-      margin: 0px 10px;
     }
   }
 
   .body {
-    flex: 22;
+    flex: 20;
   }
 }
 </style>

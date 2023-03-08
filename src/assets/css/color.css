@@ -73,12 +73,5 @@
     --lightYellow: #F4E1C0;
 
     --globalFont: SmileySans;
-
-    --commentURL: url(../file/comment.jpg);
-    --toTop: url(../file/top.jpg);
-    --bannerWave1: url(../file/bannerwave1.png) repeat-x;
-    --bannerWave2: url(../file/bannerwave2.png) repeat-x;
-    --verifyImage: url(../file/bg1.jpg);
-    --toolbar: url(../file/bg.jpg);
-    --love: url(../file/bg.jpg);
+    
 }

@@ -6,7 +6,9 @@ import {resolve} from 'path'
 export default defineConfig(({command, mode}) => {
     console.log('当前指令是：', command)
     return {
-        plugins: [vue()],
+        plugins: [
+            vue(),
+        ],
         resolve: {
             alias: {
                 '@': resolve('./src/'),

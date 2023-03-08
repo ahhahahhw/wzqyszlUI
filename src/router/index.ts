@@ -9,7 +9,7 @@ export const router = createRouter({
 })
 
 //红名单
-const redList = ['/Manage', "/Manage/ImageManage", "/Manage/UserManage", "/Manage/BlogManage"]
+const redList = ["/Manage/ImageManage", "/Manage/UserManage", "/Manage/BlogManage"]
 router.beforeEach((to, from, next) => {
     let store: any = useStore()
     // 没有用户信息的情况下，不可以进入红名单
