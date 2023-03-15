@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 import {useRoute, useRouter} from "vue-router";
-import {webUrl} from "@/env-config";
-import {nextTick} from "vue";
 
 let router = useRouter()
 let route = useRoute()
@@ -24,7 +22,7 @@ const props = defineProps({
          :key="index"
          :class="{'my-animation-slide-top': index % 2 !== 0,'my-animation-slide-bottom': index % 2 === 0}"
          class="recent-post-item shadow-box"
-       >
+    >
       <!-- 封面 -->
 
       <div :class="{ leftImage: index % 2 !== 0, rightImage: index % 2 === 0 }" class="recent-post-item-image">

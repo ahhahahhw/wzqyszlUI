@@ -5,10 +5,10 @@ import {ElMessage} from "element-plus";
 import Vcode from "vue3-puzzle-vcode";
 import {useRouter} from "vue-router";
 import {useStore} from "@/store";
-import {webUrl} from "@/env-config";
+import {webImgUrl} from "@/env-config";
 
 let router = useRouter()
-let store:any = useStore()
+let store: any = useStore()
 
 const data = reactive<any>({
   userInfo: {
@@ -49,7 +49,7 @@ const init = () => {
   fGetImageByType("验证码").then(res => {
     data.imgs = []
     res.data.data.forEach((obj: any) => {
-      data.imgs.push(webUrl + obj);
+      data.imgs.push(webImgUrl + obj);
     })
   })
 }

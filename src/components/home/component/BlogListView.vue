@@ -2,7 +2,7 @@
 import {reactive} from "vue";
 import BlogList from "@/components/home/component/BlogList.vue";
 import {fGetBlogAll} from "@/api";
-import {webUrl} from "@/env-config";
+import {webImgUrl} from "@/env-config";
 
 
 const data = reactive<any>({
@@ -12,7 +12,7 @@ const init = () => {
   fGetBlogAll().then(res => {
     data.blogList = res.data.data
     data.blogList.forEach((obj: any) => {
-      obj.coverSrc=webUrl+obj.coverSrc
+      obj.coverSrc=webImgUrl+obj.coverSrc
     })
   })
 }

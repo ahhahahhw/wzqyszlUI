@@ -5,11 +5,11 @@ import {ElMessage} from "element-plus";
 import Vcode from "vue3-puzzle-vcode";
 import {useRouter} from "vue-router";
 import {useStore} from "@/store";
-import {webUrl} from "@/env-config";
+import {webImgUrl} from "@/env-config";
 import BgImage from "@/components/common/BgImage.vue";
 
 let router = useRouter()
-let store:any = useStore()
+let store: any = useStore()
 
 const data = reactive<any>({
   userInfo: {
@@ -50,7 +50,7 @@ const init = () => {
   fGetImageByType("验证码").then(res => {
     data.imgs = []
     res.data.data.forEach((obj: any) => {
-      data.imgs.push(webUrl + obj);
+      data.imgs.push(webImgUrl + obj);
     })
   })
 }
@@ -91,7 +91,6 @@ init()
 </template>
 <style lang='less' scoped>
 #container {
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)), url("http://wzqyszl.com:8080/img/世界的镇魂曲-雪.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
