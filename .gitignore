@@ -27,4 +27,3 @@ dist-ssr
 /.vscode/extensions.json
 .gitignore
 /test/
-/src/components/test/
