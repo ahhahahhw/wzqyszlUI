@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {fGetImageByType, fGetRandomImage} from "@/api";
 import {reactive} from "vue";
-import {webUrl} from "@/env-config";
+import {webImgUrl} from "@/env-config";
 import {useRoute, useRouter} from "vue-router";
 import {useStore} from "@/store";
 
@@ -33,7 +33,7 @@ const props = defineProps({
 
 const getBgStyle = (obj: any, index: number) => {
   return {
-    backgroundImage: "url(" + webUrl + obj + ")",
+    backgroundImage: "url(" + webImgUrl + obj + ")",
     animationDelay: index * 6 + "s",
     animationDuration: data.bgImage.length * 6 + "s"
   }
@@ -49,12 +49,12 @@ const init = () => {
   //滚动
   else if (props.bgType === 2 && props.url) {
     data.containerStyle.animation = "gradientBG 80s ease infinite"
-    data.containerStyle.backgroundImage = "url(" + webUrl + props.url + ")"
+    data.containerStyle.backgroundImage = "url(" + webImgUrl + props.url + ")"
   }
   //默认随机单张
   else {
     fGetRandomImage('背景图片').then(res => {
-      data.containerStyle.backgroundImage = "url(" + webUrl + res.data.data + ")"
+      data.containerStyle.backgroundImage = "url(" + webImgUrl + res.data.data + ")"
     })
   }
 }

@@ -2,7 +2,7 @@
 import {fGetCommentsByPage} from "@/api";
 import {reactive} from "vue";
 import {getDateDiff} from "@/utils/totalUtil";
-import {webUrl} from "@/env-config";
+import {webImgUrl} from "@/env-config";
 import ProPage from "@/components/common/proPage.vue";
 
 // const emit = defineEmits([''])
@@ -47,10 +47,10 @@ const getCommentsByPage = (comment: any, page: any) => {
     data.comments = res.data.data.records
     data.comments.forEach((item: any) => {
       if (item.createUserHeadImg) {
-        item.createUserHeadImg = webUrl + item.createUserHeadImg
+        item.createUserHeadImg = webImgUrl + item.createUserHeadImg
       }
       if (item.toUserHeadImg) {
-        item.toUserHeadImg = webUrl + item.toUserHeadImg
+        item.toUserHeadImg = webImgUrl + item.toUserHeadImg
       }
     })
     data.page.total = res.data.data.total
@@ -63,6 +63,7 @@ function init() {
   data.comment.toBlogId = props.toBlogId
   getCommentsByPage(data.comment, data.page)
 }
+
 init()
 </script>
 
@@ -107,12 +108,6 @@ init()
   height: 100%;
   width: 100%;
 }
-
-@font-face {
-  font-family: sjxk;
-  src: url('../../assets/font/SanJiXingKaiJianTi-Cu-2.ttf');
-}
-
 
 .comment-head {
   display: flex;

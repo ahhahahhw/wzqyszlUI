@@ -45,9 +45,4 @@ init()
     margin-left: 10px;
   }
 }
-
-@font-face {
-  font-family: sjxk;
-  src: url('../../assets/font/SanJiXingKaiJianTi-Cu-2.ttf');
-}
 </style>

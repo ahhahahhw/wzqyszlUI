@@ -61,7 +61,6 @@ let router = useRouter()
         width: 100%;
         text-align: center;
         margin-top: 100px;
-        font-family: sjxk, serif;
         color: white;
         font-size: 50px;
       }
@@ -95,7 +94,6 @@ let router = useRouter()
           margin-top: 200px;
           height: 100px;
           width: 200px;
-          font-family: sjxk, serif;
           overflow: hidden;
 
           span {
@@ -166,10 +164,6 @@ let router = useRouter()
   }
 }
 
-@font-face {
-  font-family: sjxk;
-  src: url('../../assets/font/SanJiXingKaiJianTi-Cu-2.ttf');
-}
 
 
 @keyframes btn-anim1 {
