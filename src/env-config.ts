@@ -1,10 +1,9 @@
 
-let root="localhost"
-// let root="www.wzqyszl.com"
-let port="8089"
+// let root="localhost"
+let root="www.wzqyszl.com"
 
 
 
-export let webUrl = "http://"+root+":"+port
+export let webUrl = "http://"+root+":"+8089
 export let webImgUrl = "http://"+root
-export let wsUrl = "ws://"+root+":"+port
+export let wsUrl = "ws://"+root+":"+8089
