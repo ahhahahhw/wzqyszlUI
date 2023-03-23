@@ -16,6 +16,13 @@ export default defineConfig(({command, mode}) => {
         },
         server: {
             port: 80,
+            // proxy: {
+            //     "/img": {
+            //         target: "C:\\zgc\\img",
+            //         changeOrigin: true,
+            //         rewrite: (path) => path.replace(/^\/img/, ""),
+            //     },
+            // }
         },
         terserOptions: {
             compress: {

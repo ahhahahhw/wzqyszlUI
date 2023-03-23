@@ -57,7 +57,7 @@ const init = () => {
 init()
 </script>
 <template>
-  <BgImage></BgImage>
+<!--  <BgImage></BgImage>-->
   <div id="container">
     <div class="login-box">
       <h2>Login</h2>
