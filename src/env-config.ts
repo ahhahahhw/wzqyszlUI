@@ -1,3 +1,9 @@
-export let webUrl = "http://172.245.159.192:8089"
-export let webImgUrl = "http://wzqyszl.com"
-export let wsUrl = "ws://172.245.159.192:8089"
+
+
+// let root="localhost"
+let root="www.wzqyszl.com"
+
+export let webUrl = "https://"+root+":8089"
+export let wsUrl = "ws://"+root+":8089"
+
+export let webImgUrl = "https://wzqyszl.com"
