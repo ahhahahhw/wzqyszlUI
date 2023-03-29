@@ -4,10 +4,6 @@ export default [
         redirect: '/Welcome',
     },
     {
-        path: '/Test',
-        component: () => import('@/components/test/Test.vue'),
-    },
-    {
         path: '/Welcome',
         component: () => import('@/components/welcome/Welcome.vue'),
     },
