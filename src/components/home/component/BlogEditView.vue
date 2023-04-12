@@ -117,6 +117,7 @@ init()
 </template>
 <style lang="less" scoped>
 .container {
+  max-width: 2000px;
   width: 100%;
 }
 </style>

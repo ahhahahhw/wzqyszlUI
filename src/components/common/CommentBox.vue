@@ -49,7 +49,7 @@ init()
       </div>
     </div>
 
-    <div style="display: flex">
+    <div style="display: flex;justify-content: end;">
       <proButton info="提交"
                  @click.native="submit"
                  before="rgb(131, 123, 199)"
@@ -60,13 +60,15 @@ init()
 </template>
 <style scoped lang="less">
 .container {
+  max-width: 2000px;
   height: 100%;
   width: 100%;
 }
 
 
 .comment-textarea {
-  border: 1px solid var(--lightGray);
+  // border: 1px solid var(--lightGray);
+  border:1px solid #CFDBEF;
   width: 100%;
   font-size: 14px;
   padding: 15px;
@@ -75,12 +77,15 @@ init()
   resize: none;
   /* 不改变边框 */
   outline: none;
-  border-radius: 4px;
+  border-radius: 10px;
   background-image: var(--commentURL);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 100%;
   margin-bottom: 10px;
+}
+.comment-textarea::placeholder {
+  color: #97a4bb;
 }
 
 .comment-textarea:focus {

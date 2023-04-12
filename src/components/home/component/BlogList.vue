@@ -131,6 +131,7 @@ const props = defineProps({
 .recent-post-container {
   max-width: 780px;
   margin: auto;
+  margin-bottom: 40px;
 }
 
 .recent-post-container .recent-post-item:not(:last-child) {

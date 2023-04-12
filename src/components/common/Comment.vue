@@ -70,7 +70,7 @@ init()
 <template>
   <!-- 评论数量 -->
   <div id="commentInfo-title" class="commentInfo-title">
-    <span style="font-size: 1.15rem">评论列表 | </span>
+    <span style="font-size: 1rem;">评论列表 | </span>
     <span>{{ data.page.total }} 条留言</span>
   </div>
   <!-- 评论详情 -->
@@ -105,6 +105,7 @@ init()
 </template>
 <style scoped lang="less">
 .container {
+  max-width: 2000px;
   height: 100%;
   width: 100%;
 }
