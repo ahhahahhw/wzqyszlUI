@@ -1,24 +1,30 @@
 <script lang="ts" setup>
-import {useRouter} from "vue-router";
+import { useRouter } from "vue-router";
 
-let router=useRouter()
+let router = useRouter()
 
 const toRouter = (pathStr: any) => {
-  router.push({path: pathStr})
+  router.push({ path: pathStr })
 }
 
 </script>
 <template>
-  <div class="container">
-    <div class="menu">
-      <div class="menu-li pointer" @click="toRouter('/Home')">博客首页</div>
-      <div class="menu-li pointer" @click="toRouter('/manage/ImageManage')">图片管理</div>
-      <div class="menu-li pointer" @click="toRouter('/manage/BlogManage')">文章管理</div>
-      <div class="menu-li pointer" @click="toRouter('/manage/UserManage')">用户管理</div>
-    </div>
-    <div class="body">
-      <router-view></router-view>
-    </div>
+  <div class="common-layout">
+    <el-container>
+      <el-aside width="200px">
+        <el-scrollbar>
+          <el-menu :default-active="'2'" style="border-right: none;">
+            <el-menu-item index="1" @click="toRouter('/Home')">博客首页</el-menu-item>
+            <el-menu-item index="2" @click="toRouter('/manage/ImageManage')">图片管理</el-menu-item>
+            <el-menu-item index="3" @click="toRouter('/manage/BlogManage')">文章管理</el-menu-item>
+            <el-menu-item index="4" @click="toRouter('/manage/UserManage')">用户管理</el-menu-item>
+          </el-menu>
+        </el-scrollbar>
+      </el-aside>
+      <el-main style="padding: 0;">
+        <router-view></router-view>
+      </el-main>
+    </el-container>
   </div>
 </template>
 <style scoped lang="less">
@@ -42,7 +48,7 @@ const toRouter = (pathStr: any) => {
       margin: 10px 0px;
     }
 
-    .menu-li:hover{
+    .menu-li:hover {
       background-color: black;
       color: white;
     }
