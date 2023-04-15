@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import {reactive, ref} from "vue";
+import { reactive, ref } from "vue";
 import 'element-plus'
-import {ElMessage} from "element-plus/es";
-import {fDeleteImage, fGetImageInfoAll, fUploadImage} from "@/api";
-import {webImgUrl} from "@/env-config";
-
+import { ElMessage } from "element-plus/es";
+import { fDeleteImage, fGetImageInfoAll, fUploadImage } from "@/api";
+import { webImgUrl } from "@/env-config";
 
 const init = () => {
   fGetImageInfoAll().then(res => {
@@ -27,11 +26,11 @@ const data = reactive<any>({
 
 
 const options = [
-  {label: '背景图片', value: '背景图片'},
-  {label: '用户头像', value: '用户头像'},
-  {label: '手机背景', value: '手机背景'},
-  {label: '验证码', value: '验证码'},
-  {label: '商品图片', value: '商品图片'},
+  { label: '背景图片', value: '背景图片' },
+  { label: '用户头像', value: '用户头像' },
+  { label: '手机背景', value: '手机背景' },
+  { label: '验证码', value: '验证码' },
+  { label: '商品图片', value: '商品图片' },
 ]
 
 const upload = ref(null)
@@ -120,46 +119,41 @@ const uploadBtn = () => {
 <template>
   <div class="container">
     <div class="body">
+      <div class="image-title">
+        <el-button class="image-btn" @click="data.dialogTableVisible = true">新增图片</el-button>
+      </div>
       <div class="image-list">
-        <div v-for="(img,index) in data.bgImage" :key="index" class="block">
-          <el-image style="width: 100px; height: 100px" :src="webImgUrl+img.fileUrl"
-                    :preview-src-list="data.bgImageSrc"
-                    :initial-index="index" fit="cover"/>
-          <span class="delImage">{{ img.fileName }}</span>
-          <span class="delImage">{{ img.type }}</span>
-          <span class="delImage pointer" @click="delImage(img.id)">删除</span>
+        <div v-for="(img, index) in data.bgImage" :key="index" class="block">
+          <el-image style="width: 100%; height: auto;border: 1px solid transparent;border-radius: 10px;"
+            :src="webImgUrl + img.fileUrl" :preview-src-list="data.bgImageSrc" :initial-index="index" />
+          <p>
+            {{ img.fileName }}
+            <el-tag style="margin-top: 5px;">{{ img.type }}</el-tag>
+          </p>
+          <el-button type="danger" @click="delImage(img.id)" style="width: 100%;">删除</el-button>
         </div>
       </div>
-    </div>
-    <div class="menu">
-      <div class="menu-li" @click="data.dialogTableVisible=true">新增图片</div>
     </div>
   </div>
   <el-dialog v-model="data.dialogTableVisible" width="300px" title="上传图片">
     <div class="upload">
 
       <div id="fileSubmit" @click="uploadBtn">
-        <el-icon v-show="data.previewImg===''" class="avatar-uploader-icon">
-          <Plus/>
+        <el-icon v-show="data.previewImg === ''" class="avatar-uploader-icon">
+          <Plus />
         </el-icon>
-        <img v-show="data.previewImg!==''" :src="data.previewImg">
+        <img v-show="data.previewImg !== ''" :src="data.previewImg">
         <input ref="upload" style="display: none" id="upload" type="file" @change="handleFileUpload($event)">
       </div>
 
       <el-select v-model="data.type" style="margin-top: 20px" placeholder="Select" size="large">
-        <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-        />
+        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
       </el-select>
       <el-button class="ml-3" style="margin-top: 20px" type="success" @click="submitUpload">
         上传
       </el-button>
     </div>
   </el-dialog>
-
 </template>
 <style scoped lang="less">
 .upload {
@@ -201,9 +195,9 @@ const uploadBtn = () => {
 }
 
 .container {
+  max-width: 2000px;
   height: 100%;
   width: 100%;
-  background-color: black;
   display: flex;
   flex-direction: row;
 
@@ -211,37 +205,70 @@ const uploadBtn = () => {
     flex: 22;
   }
 
-  .menu {
-    flex: 2;
+  .image-title {
+    height: 60px;
+    background-color: #cfdbef;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 
-    .menu-li {
-      width: 100%;
-      height: 100px;
-      line-height: 100px;
-      text-align: center;
-      color: white;
-      border-bottom: solid 1px var(--el-border-color);
+    .image-btn {
+      display: flex;
+    align-items: center;
+    border-bottom: 1px solid #cfdbef;
+    margin-left: 20px;
     }
   }
+
+  // .menu {
+  //   flex: 2;
+
+  //   .menu-li {
+  //     width: 100%;
+  //     height: 100px;
+  //     line-height: 100px;
+  //     text-align: center;
+  //     color: white;
+  //     border-bottom: solid 1px var(--el-border-color);
+  //   }
+  // }
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100vh - 80px);
+  overflow: auto;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .image-list .block {
-  padding: 30px 0;
-  text-align: center;
-  border-right: solid 1px var(--el-border-color);
-  border-bottom: solid 1px var(--el-border-color);
-  display: inline-block;
   width: 20%;
-  box-sizing: border-box;
-  vertical-align: top;
+  // height: 340px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  // padding: 30px 0;
+  // text-align: center;
+  // border-right: solid 1px var(--el-border-color);
+  // border-bottom: solid 1px var(--el-border-color);
+  // display: inline-block;
+  // display: flex;
+  // justify-content: center;
+  // flex-direction: column;
+
+  // box-sizing: border-box;
+  // vertical-align: top;
 }
 
-.image-list .delImage {
-
-  display: block;
-  color: white;
-  font-size: 14px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
+// .image-list .delImage {
+//   display: block;
+//   // color: white;
+//   font-size: 14px;
+//   margin-bottom: 20px;
+//   margin-top: 20px;
+// }
 </style>

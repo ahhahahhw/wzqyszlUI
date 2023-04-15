@@ -25,17 +25,18 @@ const data = reactive<any>({
 <template>
   <div class="container">
     <el-table :data="data.tableData" style="width: 100%">
-      <el-table-column prop="username" label="用户名" width="180"/>
-      <el-table-column prop="nickname" label="昵称" width="180"/>
-      <el-table-column prop="level" label="权限" width="180"/>
-      <el-table-column prop="sex" label="性别" width="180"/>
+      <el-table-column prop="username" label="用户名" width="200"/>
+      <el-table-column prop="nickname" label="昵称" width="200"/>
+      <el-table-column prop="level" label="权限" width="200"/>
+      <el-table-column prop="sex" label="性别" width="200"/>
     </el-table>
   </div>
 </template>
 <style scoped lang="less">
 .container {
+  max-width: 2000px;
   height: 100%;
   width: 100%;
-  background-color: black;
+  // background-color: black;
 }
 </style>

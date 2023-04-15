@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import {reactive} from "vue";
-import {fGetBlogAll} from "@/api";
-import {useRoute, useRouter} from "vue-router";
-import {ElMessage} from "element-plus";
+import { reactive } from "vue";
+import { fGetBlogAll } from "@/api";
+import { useRoute, useRouter } from "vue-router";
+import { ElMessage } from "element-plus";
 
 const router = useRouter()
 const route = useRoute()
@@ -20,9 +20,9 @@ const data = reactive<any>({
 
 const handleEdit = (id: any) => {
   if (id) {
-    router.push({path: "/home/BlogEditView", query: {id}})
+    router.push({ path: "/home/BlogEditView", query: { id } })
   } else {
-    router.push({path: "/home/BlogEditView"})
+    router.push({ path: "/home/BlogEditView" })
   }
 
 }
@@ -41,22 +41,22 @@ const handleDelete = (id: any) => {
 
     <div id="body">
       <el-row class="mb-4">
-        <el-button type="primary" round class="menu-li" @click="handleEdit()">新增Blog</el-button>
+        <div class="image-title">
+          <el-button class="image-btn" @click="handleEdit()">新增Blog</el-button>
+        </div>
+        <!-- <el-button type="primary" round class="menu-li" @click="handleEdit()">新增Blog</el-button> -->
       </el-row>
       <el-table :data="data.tableData" style="width: 100%">
-        <el-table-column prop="title" label="文章标题" width="180"/>
-        <el-table-column prop="createUserName" label="创建人" width="180"/>
-        <el-table-column prop="type" label="文章类型" width="180"/>
-        <el-table-column prop="content" label="content" width="180"/>
-        <el-table-column prop="createTime" label="创建时间" width="180"/>
-        <el-table-column prop="coverSrc" label="封面链接" width="180"/>
-        <el-table-column label="操作" width="180">
+        <el-table-column prop="title" label="文章标题" width="200"/>
+        <el-table-column prop="createUserName" label="创建人" width="200" />
+        <el-table-column prop="type" label="文章类型" width="200" />
+        <el-table-column prop="content" label="content" />
+        <el-table-column prop="createTime" label="创建时间" width="200" />
+        <el-table-column prop="coverSrc" label="封面链接" width="200" />
+        <el-table-column label="操作" width="200">
           <template #default="scope">
             <el-button size="small" @click="handleEdit(scope.row.id)">编辑</el-button>
-            <el-button
-                size="small"
-                type="danger"
-                @click="handleDelete(scope.$index, scope.row)">
+            <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">
               删除
             </el-button>
           </template>
@@ -67,11 +67,13 @@ const handleDelete = (id: any) => {
 </template>
 <style scoped lang="less">
 .container {
+  max-width: 2000px;
   height: 100%;
   width: 100%;
-  background-color: black;
+  // background-color: black;
 
   #body {
+    width: 100%;
   }
 
   #menu {
@@ -83,6 +85,22 @@ const handleDelete = (id: any) => {
       text-align: center;
       color: white;
       border-bottom: solid 1px var(--el-border-color);
+    }
+  }
+
+  .image-title {
+    width: 100%;
+    height: 60px;
+    background-color: #cfdbef;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .image-btn {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #cfdbef;
+      margin-left: 20px;
     }
   }
 }

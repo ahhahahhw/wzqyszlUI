@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import {reactive} from "vue";
-import {useRoute, useRouter} from "vue-router";
+import { reactive } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import MdEditor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
-import {useStore} from "@/store";
-import {fGetBlog, fSaveBlog} from "@/api";
-import {ElMessage} from "element-plus";
+import { useStore } from "@/store";
+import { fGetBlog, fSaveBlog } from "@/api";
+import { ElMessage } from "element-plus";
 
 let router = useRouter()
 let route = useRoute()
@@ -19,7 +19,7 @@ const data = reactive<any>({
 
 MdEditor.config({
   markedRenderer(renderer) {
-    renderer.link = (href:any, title:any, text:any) => {
+    renderer.link = (href: any, title: any, text: any) => {
       return `${text}`;
     };
 
@@ -29,9 +29,9 @@ MdEditor.config({
 
 
 const options = [
-  {value: '游戏', label: '游戏'},
-  {value: '论坛', label: '论坛'},
-  {value: '博客', label: '博客'},
+  { value: '游戏', label: '游戏' },
+  { value: '论坛', label: '论坛' },
+  { value: '博客', label: '博客' },
 ]
 
 
@@ -66,12 +66,15 @@ const init = () => {
 }
 init()
 </script>
-
 <template>
   <div class="contaier" v-loading="data.loading">
-    <md-editor v-model="data.blog.content" :preview-only="false" :showCodeRowNumber="true"
-               style="border-radius: 15px;width: 100%;height:600px;margin: 0 auto;padding: 0 10px;"
-               @onSave="data.saveDialog=true"/>
+    <div class="back-btn">
+      <el-icon @click="router.push('/manage/BlogManage')" :size="20">
+        <ArrowLeft />
+      </el-icon>
+    </div>
+    <md-editor v-model="data.blog.content" :preview-only="false" :showCodeRowNumber="true" class="md-editor"
+      @onSave="data.saveDialog = true" />
   </div>
 
 
@@ -81,7 +84,7 @@ init()
         <el-input type="text" v-model="data.blog.title" clearable maxlength="50" show-word-limit>
           <template #prefix>
             <el-icon>
-              <CopyDocument/>
+              <CopyDocument />
             </el-icon>
           </template>
         </el-input>
@@ -90,19 +93,14 @@ init()
         <el-input v-model="data.blog.coverSrc" clearable type="text" maxlength="2000" show-word-limit>
           <template #prefix>
             <el-icon>
-              <Picture/>
+              <Picture />
             </el-icon>
           </template>
         </el-input>
       </el-form-item>
       <el-form-item label="Blog类型" prop="type">
         <el-select v-model="data.blog.type" class="m-2" placeholder="Select">
-          <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-          />
+          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
         </el-select>
       </el-form-item>
     </el-form>
@@ -116,7 +114,25 @@ init()
   </el-dialog>
 </template>
 <style lang="less" scoped>
-.container {
-  width: 100%;
+.contaier {
+  //   max-width: 2000px;
+  //   width: 100%;
+  margin: 0 20px;
+
+  .back-btn {
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 20px 0 20px;
+    width: 100%;
+  }
+
+  .md-editor {
+    width: 100%;
+    height: 600px;
+    margin: 0 auto;
+    padding: 0 10px;
+    border-radius: 0 0 15px 15px;
+    border-top: none;
+  }
 }
 </style>
