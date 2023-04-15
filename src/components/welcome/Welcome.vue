@@ -32,6 +32,7 @@ let router = useRouter()
 </template>
 <style scoped lang="less">
 .container {
+  max-width: 2000px;
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -95,6 +96,7 @@ let router = useRouter()
           height: 100px;
           width: 200px;
           overflow: hidden;
+          cursor: pointer;
 
           span {
             position: absolute;

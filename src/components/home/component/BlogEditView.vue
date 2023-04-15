@@ -114,25 +114,8 @@ init()
   </el-dialog>
 </template>
 <style lang="less" scoped>
-.contaier {
-  //   max-width: 2000px;
-  //   width: 100%;
-  margin: 0 20px;
-
-  .back-btn {
-    background-color: #fff;
-    border-radius: 10px 10px 0 0;
-    padding: 10px 20px 0 20px;
-    width: 100%;
-  }
-
-  .md-editor {
-    width: 100%;
-    height: 600px;
-    margin: 0 auto;
-    padding: 0 10px;
-    border-radius: 0 0 15px 15px;
-    border-top: none;
-  }
+.container {
+  max-width: 2000px;
+  width: 100%;
 }
 </style>

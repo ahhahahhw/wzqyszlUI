@@ -59,6 +59,7 @@ init()
 
 <template>
   <div class="container">
+    <!-- <div>返回</div> -->
     <div style="background-color: #fff;border-radius: 15px;padding: 0 10px; width: 60%;">
       <el-icon @click="router.push('/Home/BlogListView')" :size="20" style="margin-top: 15px;">
         <ArrowLeft />

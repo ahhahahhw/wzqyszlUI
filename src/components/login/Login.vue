@@ -1,11 +1,11 @@
 <script setup lang='ts'>
-import {reactive} from "vue";
-import {fGetImageByType, fLogin} from "@/api";
-import {ElMessage} from "element-plus";
+import { reactive } from "vue";
+import { fGetImageByType, fLogin } from "@/api";
+import { ElMessage } from "element-plus";
 import Vcode from "vue3-puzzle-vcode";
-import {useRouter} from "vue-router";
-import {useStore} from "@/store";
-import {webImgUrl} from "@/env-config";
+import { useRouter } from "vue-router";
+import { useStore } from "@/store";
+import { webImgUrl } from "@/env-config";
 import BgImage from "@/components/common/BgImage.vue";
 
 let router = useRouter()
@@ -31,7 +31,7 @@ const submit = () => {
         message: '登录成功'
       })
       store.userInfo = res.data.data
-      router.push({path: '/Manage'})
+      router.push({ path: '/Manage' })
     } else {
       ElMessage({
         showClose: true,
@@ -43,7 +43,7 @@ const submit = () => {
 }
 
 const register = () => {
-  router.push({path: '/register'})
+  router.push({ path: '/register' })
 }
 
 const init = () => {
@@ -57,7 +57,7 @@ const init = () => {
 init()
 </script>
 <template>
-<!--  <BgImage></BgImage>-->
+  <!--  <BgImage></BgImage>-->
   <div id="container">
     <div class="login-box">
       <h2>Login</h2>
@@ -85,7 +85,7 @@ init()
         <!--          注 册-->
         <!--        </a>-->
       </div>
-      <Vcode :show="data.isShow" @success="submit" @close="data.isShow=false" :imgs="data.imgs"/>
+      <Vcode :show="data.isShow" @success="submit" @close="data.isShow = false" :imgs="data.imgs" />
     </div>
   </div>
 </template>
@@ -125,9 +125,9 @@ init()
       color: #fff;
       border-radius: 5px;
       box-shadow: 0 0 5px #03e9f4,
-      0 0 25px #03e9f4,
-      0 0 50px #03e9f4,
-      0 0 100px #03e9f4;
+        0 0 25px #03e9f4,
+        0 0 50px #03e9f4,
+        0 0 100px #03e9f4;
     }
 
     a {
@@ -217,7 +217,8 @@ init()
         transition: .5s;
       }
 
-      input:focus ~ label, input:valid ~ label {
+      input:focus~label,
+      input:valid~label {
         top: -20px;
         left: 0;
         color: #03e9f4;
@@ -253,6 +254,7 @@ init()
   0% {
     right: -100%;
   }
+
   50%,
   100% {
     right: 100%;
@@ -263,6 +265,7 @@ init()
   0% {
     bottom: -100%;
   }
+
   50%,
   100% {
     bottom: 100%;
